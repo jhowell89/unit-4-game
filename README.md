@@ -15,3 +15,4 @@
 <li>When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values.</li>
 <li>The app will show the number of games the player wins and loses.</li>
 </ul>
+Enjoy the Game!
