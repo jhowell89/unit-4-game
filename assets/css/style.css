@@ -1,73 +1,88 @@
-/* General Elements*/
-body{
-	background-image: url("../images/background.png")
-}
-div{
-	background-color: rgb(182, 211, 21);
-	margin: 10px;
-    width: 25%;
-    
-}
-div{
-	border: solid 2px antiquewhite;
-    padding: 20px;
-    
-}
-h1, h3, span{
-	font-weight: bold;
-    text-align: center;
-    
-}
-h1{
-	font-size: 30pt;
-}
-ol{
-	list-style: decimal inside; 
-}
-ul {
-	list-style: disc inside;
-	text-indent: 20px;
-}
-/* Specfic Elements*/
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+@import url(https://fonts.googleapis.com/css?family=Passion+One);
 
 
-div.gems {
-	background-color: #31b472;
+
+html {
+	box-sizing: border-box;
 }
-div.header {
-background-color: coral
+
+body { 
+	min-height: 100vh;
+    background: url("../images/galaxy.jpg");
+    background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	margin-top: -101px;
 }
-div.instructions{
-    width: 20%;
-    background-color: rgb(10, 216, 243)
+
+h3 {
+	margin: 20px 0px 10px 0px;
+	letter-spacing: 3px;
 }
-/* Classes */
-.numberToMatch, .winsAndLosses{
-	float: left;
-	width: 10%;
-	height: 60px;
+p{
+	color: white;
+	font-family: 'Passion One', Arial, Helvetica, sans-serif;
+	font-size: x-large;
 }
-.userTotal{
-	width: 10%;
-	height: 60px;
+
+.header {
+	padding: 70px 0px 0px 0px;
+	color: grey;
 }
-.gems{
-	clear: both;
+
+h1, h3, #magicNumber, #totalScore, #wins, #losses, .score {
+	color: #5073aa;
 }
-.gemImage{
-	height: 60px;
-	margin: 20px;
+
+h1 {
+	color:rgb(241, 100, 154);
+	margin: 50px 0px 38px 0px;
+	letter-spacing: 12px;
+	font-family: 'Bangers';
+	font-size: 3.5rem;
+	
+
 }
-/* IDs */
-#blue{
-	color: #3092c7;
+
+.crystalimg {
+	width: 150px;
+	margin: 30px auto;
+	
 }
-#green{
-	color: #00aa59;
+
+.directions {
+	color: grey;
+	text-align: center;
+	padding: 20px 85px;
 }
-#red{
-	color: #ec4b5f;
+
+.score {
+	padding-top: 30px;
+	margin-bottom: 0;
+	font-size: 22px;
+	font-weight: 600;
+	letter-spacing: 3px;
 }
-#yellow{
-	color: #ffc225;
+
+/*.directions {
+	
+}*/
+
+#winOrLose {
+	color: #a182bc;
 }
+
+.total, .scores, .directions {
+	margin: auto;
+}
+
+.btn {
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #a182bc;
+	letter-spacing: 3px;
+}
+

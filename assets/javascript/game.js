@@ -1,95 +1,82 @@
-$( document ).ready(function(){
-    var Random=Math.floor(Math.random()*101+19)
-    // Selects a random number to be shown at the start of the game
-    // Number should be should be between 19 - 120
-    $('#randomNumber').text(Random);
-    // Appending random number to the randomNumber id in the html doc
-    //
-    var num1= Math.floor(Math.random()*11+1)
-    var num2= Math.floor(Math.random()*11+1)
-    var num3= Math.floor(Math.random()*11+1)
-    var num4= Math.floor(Math.random()*11+1)
-    // Setting up random numbers for each jewel
-    // Random number has to be between 1 - 12
-    // 
-    var userTotal= 0; 
-    var wins= 0;
-    var losses = 0;
-    //  Decaring variables for tallies
-  $('#numberWins').text(wins);
-  $('#numberLosses').text(losses);
-  //resets the game
-  function reset(){
-        Random=Math.floor(Math.random()*101+19);
-        console.log(Random)
-        $('#randomNumber').text(Random);
-        num1= Math.floor(Math.random()*11+1);
-        num2= Math.floor(Math.random()*11+1);
-        num3= Math.floor(Math.random()*11+1);
-        num4= Math.floor(Math.random()*11+1);
-        userTotal= 0;
-        $('#finalTotal').text(userTotal);
-        } 
-  //adds the wins to the userTotal
-  function yay(){
-  alert("You won!");
-    wins++; 
-    $('#numberWins').text(wins);
-    reset();
-  }
-  //addes the losses to the userTotal
-  function loser(){
-  alert ("You lose!");
-    losses++;
-    $('#numberLosses').text(losses);
-    reset()
-  }
-  //sets up click for jewels
-    $('#one').on ('click', function(){
-      userTotal = userTotal + num1;
-      console.log("New userTotal= " + userTotal);
-      $('#finalTotal').text(userTotal); 
-            //sets win/lose conditions
-          if (userTotal == Random){
-            yay();
-          }
-          else if ( userTotal > Random){
-            loser();
-          }   
-    })  
-    $('#two').on ('click', function(){
-      userTotal = userTotal + num2;
-      console.log("New userTotal= " + userTotal);
-      $('#finalTotal').text(userTotal); 
-          if (userTotal == Random){
-            yay();
-          }
-          else if ( userTotal > Random){
-            loser();
-          } 
-    })  
-    $('#three').on ('click', function(){
-      userTotal = userTotal + num3;
-      console.log("New userTotal= " + userTotal);
-      $('#finalTotal').text(userTotal);
-  //sets win/lose conditions
-            if (userTotal == Random){
-            yay();
-          }
-          else if ( userTotal > Random){
-            loser();
-          } 
-    })  
-    $('#four').on ('click', function(){
-      userTotal = userTotal + num4;
-      console.log("New userTotal= " + userTotal);
-      $('#finalTotal').text(userTotal); 
-        
-            if (userTotal == Random){
-            yay();
-          }
-          else if ( userTotal > Random){
-            loser();
-          }
-    });   
-  }); 
+$(document).ready(function() {
+	var magicNumber;
+	var totalScore = 0;
+	var wins = 0;
+	var losses = 0;
+	var crystal1Num;
+	var crystal2Num;
+	var crystal3Num;
+	var crystal4Num;
+
+	function newNumbers() {
+		magicNumber = Math.floor(Math.random() * 110) + 20;
+		crystal1Num = Math.ceil(Math.random() * 12);
+		crystal2Num = Math.ceil(Math.random() * 12);
+		crystal3Num = Math.ceil(Math.random() * 12);
+		crystal4Num = Math.ceil(Math.random() * 12);
+	}
+
+	function newGame() {
+		newNumbers();
+		totalScore = 0;
+		$("#magicNumber").text(magicNumber);
+		$("#totalScore").text(totalScore);
+		$("#crystal1").attr("data-crystalvalue", crystal1Num);
+		$("#crystal2").attr("data-crystalvalue", crystal2Num);
+		$("#crystal3").attr("data-crystalvalue", crystal3Num);
+		$("#crystal4").attr("data-crystalvalue", crystal4Num);
+		$("#wins").text(wins);
+		$("#losses").text(losses);
+		$("#winOrLose").text("");
+
+		//console.log(crystal1Num, crystal2Num, crystal3Num, crystal4Num);
+	}
+
+	function youWin() {
+		$("#winOrLose").text("YOU WIN!");
+		wins++;
+		$("#wins").text(wins);
+	}
+
+	function youLose() {
+		$("#winOrLose").text("YOU LOSE");
+		losses++;
+		$("#losses").text(losses);
+	}
+
+	newGame();
+
+	$(".crystalimg").hover(function() {
+		$(this).css({opacity: 0.3});
+	},
+	function() {
+		$(this).css({opacity: 1});
+	});
+
+	// Function to add the crystal values together
+	$(".crystalimg").on("click", function() {
+		if (totalScore >= magicNumber) {
+			return;
+		}
+
+		var crystalValue = $(this).attr("data-crystalvalue");
+		crystalValue = parseInt(crystalValue);
+		totalScore += crystalValue;
+		$("#totalScore").text(totalScore);
+
+		if (totalScore === magicNumber) {
+			youWin();
+		} else if (totalScore > magicNumber) {
+			youLose();
+		}
+	});
+
+	$(".btn").on("click", function() {
+		newGame();
+	});
+
+
+
+
+});
+
